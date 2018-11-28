@@ -34,15 +34,17 @@
         </div>
       </nav>
     </header>
-    <div class="row">
-      <div class="col-md-12">
-        <% flash.each do |key, message| %>
-            <div class="text-center alert 
-                        alert-<%= ['notice', 'success'].include?(key) ? 'success' : 'danger' %>">
-              <%= message %> 
-            </div>
-        <% end %>
-        <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |key, message| %>
+              <div class="text-center alert 
+                          alert-<%= ['notice', 'success'].include?(key) ? 'success' : 'danger' %>">
+                <%= message %> 
+              </div>
+          <% end %>
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>
