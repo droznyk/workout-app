@@ -16,10 +16,6 @@ RSpec.describe 'Sign up user' do
   end
 
   scenario 'with invalid credentials' do
-    before do
-      @john = User.create(email: "john@example.com", password: "password")
-    end
-
     visit '/'
 
     click_link 'Sign up'
@@ -30,6 +26,6 @@ RSpec.describe 'Sign up user' do
     click_button "Sign up"
 
     expect(page).to have_content("prohibited this user from being saved")
-    expect(User.count).to eq 1
+    expect(User.count).to eq 0
   end
 end
