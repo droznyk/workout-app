@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an workout app made by [Emmanuel Asante](https://github.com/easante) in [Ruby on Rails 5 - BDD, RSpec and Capybara](https://www.udemy.com/ruby-rails-5-bdd-rspec-capybara) course.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Stack
+* Ruby: 2.3.0
+* Rails: 5.0.7.1
