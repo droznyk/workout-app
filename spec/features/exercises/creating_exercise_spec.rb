@@ -4,15 +4,15 @@ RSpec.describe 'Creating exercise' do
   before do
     @zoe = User.create!(email: 'zoe@example.com', password: 'password')
     login_as(@zoe)
-  end
 
-  scenario 'with valid credentials' do
     visit '/'
 
     click_link 'My Lounge'
     click_link 'New Workout'
     expect(page).to have_link('Back')
+  end
 
+  scenario 'with valid credentials' do
     fill_in 'Duration',	with: 70
     fill_in 'Workout details',	with: 'Weight lifting'
     fill_in 'Activity date',	with: '2016-07-26'
@@ -25,12 +25,6 @@ RSpec.describe 'Creating exercise' do
   end
 
   scenario 'with invalid credentials' do
-    visit '/'
-
-    click_link 'My Lounge'
-    click_link 'New Workout'
-    expect(page).to have_link('Back')
-
     fill_in 'Duration',	with: 'anything'
     fill_in 'Workout details',	with: ''
     fill_in 'Activity date',	with: ''
