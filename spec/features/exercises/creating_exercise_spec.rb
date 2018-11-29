@@ -18,5 +18,9 @@ RSpec.describe 'Creating exercise' do
     click_button 'Create Exercise'
 
     expect(page).to have_link('Back')
+    expect(page).to have_content('Exercise has been created')
+    exercise = Exercise.last
+    expect(current_path).to eq(user_exercise_path(@zoe, exercise))
+    expect(exercise.user_id).to eq(@zoe.id)
   end
 end
