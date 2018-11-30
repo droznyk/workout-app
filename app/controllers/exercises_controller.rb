@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+  before_action :fetch_exercise, only: %i[show edit update]
+
   def index
     @exercises = current_user.exercises
   end
@@ -20,7 +22,19 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    @exercise = current_user.exercises.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @exercise.update(exercise_params)
+      flash[:notice] = 'Exercise has been updated'
+      redirect_to user_exercise_path(current_user, @exercise)
+    else
+      flash.now[:alert] = 'Exercise has not been updated'
+      render :edit
+    end
   end
 
   private
@@ -29,5 +43,9 @@ class ExercisesController < ApplicationController
     params.require(:exercise).permit(
       :duration_in_min, :workout, :workout_date, :user_id
     )
+  end
+
+  def fetch_exercise
+    @exercise = current_user.exercises.find(params[:id])
   end
 end
