@@ -25,4 +25,19 @@ RSpec.feature 'Editing Exercise' do
     expect(page).to have_content(45)
     expect(page).not_to have_content(48)
   end
+
+  scenario 'with invalid data fails' do
+    visit '/'
+
+    click_link 'My Lounge'
+
+    click_link 'Edit'
+
+    fill_in "Duration",	with: -3
+    click_button 'Update Exercise'
+
+    expect(page).to have_content('Exercise has not been updated')
+    expect(page).to have_content('prohibited this exercise from being saved')
+    expect(@owner_exercise.duration_in_min).to eq 48
+  end
 end
