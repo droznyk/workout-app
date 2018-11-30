@@ -34,4 +34,14 @@ RSpec.feature 'Listing Exercises' do
     expect(page).not_to have_content(@exercise3.workout)
     expect(page).not_to have_content(@exercise3.workout_date)
   end
+
+  scenario 'shows no exercises if none created' do
+    @zoe.exercises.delete_all
+
+    visit '/'
+
+    click_link 'My Lounge'
+
+    expect(page).to have_content('No Workouts Yet')
+  end
 end
