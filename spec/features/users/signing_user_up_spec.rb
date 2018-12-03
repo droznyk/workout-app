@@ -6,13 +6,18 @@ RSpec.describe 'Sign up user' do
 
     click_link 'Sign up'
 
+    fill_in "First name",	with: "John"
+    fill_in "Last name",	with: "Evans"
     fill_in "Email",	with: "john@example.com" 
     fill_in "Password",	with: "password" 
     fill_in "Password confirmation",	with: "password" 
     click_button "Sign up"
 
     expect(page).to have_content("You have signed up successfully.")
-    expect(User.last.email).to eq("john@example.com")  
+    expect(User.last.email).to eq("john@example.com")
+
+    visit '/'
+    expect(page).to have_content("John Evans")
   end
 
   scenario 'with invalid credentials' do
@@ -20,6 +25,8 @@ RSpec.describe 'Sign up user' do
 
     click_link 'Sign up'
 
+    fill_in "First name",	with: ""
+    fill_in "Last name",	with: ""
     fill_in "Email",	with: ""
     fill_in "Password",	with: ""
     fill_in "Password confirmation",	with: ""
