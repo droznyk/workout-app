@@ -4,9 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name
-  
   has_many :exercises
+
+  validates_presence_of :first_name, :last_name
+
+  self.per_page = 10
 
   def full_name
     "#{first_name} #{last_name}"
