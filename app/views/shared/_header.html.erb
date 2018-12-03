@@ -16,10 +16,22 @@
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to "Home", root_path %></li>
         </ul>
+        <div class="fix-pos-in-navbar">
+          <%= form_tag(search_dashboards_path, method: :get,
+                        class: "navbar-form navbar-left",
+                        role: "search") do %>
+            <div class="form-group">
+              <%= text_field_tag :search_name, nil,
+                    placeholder: "Search for friends",
+                    class: "form-control" %>
+            </div>
+            <%= submit_tag "Search", class: "btn btn-default" %>
+          <% end %>
+        </div>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to 'My Lounge', user_exercises_path(current_user) %></li>
-            <li class="navbar-text" id="signed-as">Signed in as <%= current_user.email %></li>
+            <li class="navbar-text fix-pos-in-navbar">Signed in as <%= current_user.email %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Log in", new_user_session_path %></li>
