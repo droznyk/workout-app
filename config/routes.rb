@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       get :search, to: 'dashboards#search'
     end
   end
+
+  resources :friendships, only: %i[show create destroy]
 end
