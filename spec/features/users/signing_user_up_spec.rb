@@ -32,7 +32,10 @@ RSpec.describe 'Sign up user' do
     fill_in "Password confirmation",	with: ""
     click_button "Sign up"
 
-    expect(page).to have_content("prohibited this user from being saved")
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("Last name can't be blank")
+    expect(page).to have_content("Email can't be blank")
+    expect(page).to have_content("Password can't be blank")
     expect(User.count).to eq 0
   end
 end
