@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   validates_presence_of :first_name, :last_name
 
+  after_create :create_chatroom
+
   self.per_page = 10
 
   def full_name
@@ -35,5 +37,11 @@ class User < ApplicationRecord
 
   def current_friendship(friend)
     friendships.where(friend: friend).first
+  end
+
+  private
+
+  def create_chatroom
+    ChatroomService.create(self)
   end
 end
