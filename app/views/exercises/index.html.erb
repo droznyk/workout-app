@@ -43,7 +43,7 @@
 </div>
 
 <div class="col-md-4 col-xs-12">
-  <h1 class="test-center">My friends </h1>
+  <h1 class="text-center">My friends </h1>
   <% @friends.each do |friend| %>
     <div class="col-md-offset-1 col-md-6 friend_name">
       <%= link_to friend.full_name, friendship_path(current_user.current_friendship(friend)) %>
