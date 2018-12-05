@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :friendships, only: %i[show create destroy]
   resources :messages, only: [:create]
 
+  get '/stimulus', to: 'dashboards#stimulus'
+
   mount ActionCable.server => '/cable'
 end

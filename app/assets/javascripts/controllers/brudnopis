@@ -1,0 +1,23 @@
+<p data-target="hello.editUser" data-hello-user="<%= @user.full_name %>">
+greet(){
+      this.greetTarget.textContent = this.name
+    }
+
+    get name() {
+      return this.nameTarget.value
+    }
+
+
+
+    connect() {
+      this.outputTarget.textContent = 'Hello, Patryk!'
+    }
+
+    "output", "name", "greet", "editUser"
+
+
+    <p data-target="hello.output"></p>
+  
+  <input data-target="hello.name" type="text">
+  <button data-action="click->hello#greet">Greet</button>
+  <p data-target="hello.greet"></p>
